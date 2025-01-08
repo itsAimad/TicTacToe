@@ -15,7 +15,7 @@ def center_screen(window,width,height):
 width = 600
 height = 540
 center_screen(window,width,height)
-icon = PhotoImage(file="TicTacToe/tictactoe.png")
+icon = PhotoImage(file=r"C:\Users\Aimad\PycharmProjects\pythonProject\TicTacToe\tictactoe.png")
 window.iconphoto(True,icon)
 window.title("TicTacToe by Aimad")
 window.config(bg="black")
@@ -57,6 +57,12 @@ def check_win():
             return True, [2,4,6]
 
         return False, []
+def check_tie():
+    for button in buttons:
+        if button["text"] == "":
+            return False
+    return True
+
 current_player = 1
 def restart_game():
     global current_player
@@ -95,6 +101,15 @@ def click(num):
             restart_game()
         else:
             window.destroy()
+    elif check_tie():
+        turn_label.config(text="It's a tie!", font=("Arial", 20), bg="red", pady=10, justify='center')
+        ask = messagebox.askyesno(title='Play Again',message="It's a tie, wanna play again ?")
+        if ask:
+            restart_game()
+        else:
+            window.destroy()
+
+
 
 
 
