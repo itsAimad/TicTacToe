@@ -69,6 +69,7 @@ def restart_game():
     current_player = 1
     turn_label.config(text='Player 2 Now')
     for button in buttons:
+        # Make all buttons's state to Normal so that the players can click again
         button.config(text="",state='normal',bg='black')
 
 
